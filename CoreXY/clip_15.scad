@@ -1,0 +1,9 @@
+cube([15,3,8]);
+translate([0,3,0])cube([1,2,8]);
+translate([2,3,0])cube([1,2,8]);
+translate([4,3,0])cube([1,2,8]);
+translate([6,3,0])cube([1,2,8]);
+translate([8,3,0])cube([1,2,8]);
+translate([10,3,0])cube([1,2,8]);
+translate([12,3,0])cube([1,2,8]);
+translate([14,3,0])cube([1,2,8]);

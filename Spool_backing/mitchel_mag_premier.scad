@@ -1,10 +1,10 @@
-d_in_max = 60.2;
-d_in_min = 56.8;
-h_in = 23.6;
+d_in_max = 26.2;
+d_in_min = 26.2;
+h_in = 8.5;
 
-d_out_max = 75;
-d_out_min = 70;
-h_out = 27.4;
+d_out_max = 32.7;
+d_out_min = 31.6;
+h_out = 12.3;
 
 $fn=100;
 
