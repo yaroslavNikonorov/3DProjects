@@ -32,21 +32,21 @@ module stand(d1=30,d2=28,d3=38,d4=40,h1=20,h2=25, ss_w=1){
     difference(){
         union(){
             translate([0,0,0])cylinder(r1=d4/2-p_w, r2=d1/2, h=(h2-h1)/2);
-            translate([0,0,-l_h])cylinder(r=d4/2,h=l_h);
+            translate([0,0,-l_h])cylinder(r=d4/2+1,h=l_h);
         }
         for(ang=[0:360/(s_n*2):360]){
-            rotate([0,0,ang])translate([(d2/2)-1,-ss_w/2,-1])cube([3,ss_w,h2+2]);
-            rotate([0,0,ang])translate([(d4/2)-p_w,-ss_w/2,-1])cube([3,ss_w,h2+2]);
+            rotate([0,0,ang])translate([(d2/2)-1,-ss_w/2,-1])cube([d4-d1,ss_w,h2+2]);
+            //rotate([0,0,ang])translate([(d4/2)-p_w,-ss_w/2,-1])cube([3,ss_w,h2+2]);
         }
-        translate([(d2/2)-1,-ss_w,-1])cube([3,ss_w,h2+2]);
-        translate([(d2/2)-1,0,-1])cube([3,ss_w,h2+2]);
-        translate([-(d2/2+3)+1,-ss_w,-1])cube([3,ss_w,h2+2]);
-        translate([-(d2/2+3)+1,0,-1])cube([3,ss_w,h2+2]);
+        translate([(d2/2)-1,-ss_w,-1])cube([d4-d1,ss_w,h2+2]);
+        translate([(d2/2)-1,0,-1])cube([d4-d1,ss_w,h2+2]);
+        translate([-(d2/2+d4-d1)+1,-ss_w,-1])cube([d4-d1,ss_w,h2+2]);
+        translate([-(d2/2+d4-d1)+1,0,-1])cube([d4-d1,ss_w,h2+2]);
         
-        translate([(d4/2)-p_w,-ss_w,-1])cube([3,ss_w,h2+2]);
-        translate([(d4/2)-p_w,0,-1])cube([3,ss_w,h2+2]);
-        translate([-(d4/2+3)+p_w,-ss_w,-1])cube([3,ss_w,h2+2]);
-        translate([-(d4/2+3)+p_w,0,-1])cube([3,ss_w,h2+2]);
+//        translate([(d4/2)-p_w,-ss_w,-1])cube([3,ss_w,h2+2]);
+//        translate([(d4/2)-p_w,0,-1])cube([3,ss_w,h2+2]);
+//        translate([-(d4/2+3)+p_w,-ss_w,-1])cube([3,ss_w,h2+2]);
+//        translate([-(d4/2+3)+p_w,0,-1])cube([3,ss_w,h2+2]);
 
     }
     }
@@ -79,4 +79,4 @@ module spool_backing(d1=30,d2=28,d3=38,d4=40,h1=20,h2=25, support=true, stand=fa
 }
 
 //spool_backing(stand=true);
-//stand();
+stand();
