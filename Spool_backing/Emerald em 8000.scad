@@ -11,7 +11,7 @@ echo(h2_abs);
 
 in_delta = 0.2;
 out_delta = 0.4;
-h_delta = 0.0;
+h_delta = l_h;
 
 use <spool_backing.scad>
 
