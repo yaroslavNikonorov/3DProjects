@@ -1,5 +1,6 @@
 th_in=1.5;
 th_out=1.5;
+l_h=0.4;
 
 s_w=1;
 s_n=15;
@@ -29,14 +30,24 @@ module support_diff(d1=30,d2=28,d3=38,d4=40,h1=20,h2=25){
 
 module stand(d1=30,d2=28,d3=38,d4=40,h1=20,h2=25, ss_w=1){
     difference(){
-        translate([0,0,0])cylinder(r1=d4/2-p_w, r2=d1/2, h=(h2-h1)/2);
+        union(){
+            translate([0,0,0])cylinder(r1=d4/2-p_w, r2=d1/2, h=(h2-h1)/2);
+            translate([0,0,-l_h])cylinder(r=d4/2,h=l_h);
+        }
         for(ang=[0:360/(s_n*2):360]){
             rotate([0,0,ang])translate([(d2/2)-1,-ss_w/2,-1])cube([3,ss_w,h2+2]);
+            rotate([0,0,ang])translate([(d4/2)-p_w,-ss_w/2,-1])cube([3,ss_w,h2+2]);
         }
         translate([(d2/2)-1,-ss_w,-1])cube([3,ss_w,h2+2]);
         translate([(d2/2)-1,0,-1])cube([3,ss_w,h2+2]);
         translate([-(d2/2+3)+1,-ss_w,-1])cube([3,ss_w,h2+2]);
         translate([-(d2/2+3)+1,0,-1])cube([3,ss_w,h2+2]);
+        
+        translate([(d4/2)-p_w,-ss_w,-1])cube([3,ss_w,h2+2]);
+        translate([(d4/2)-p_w,0,-1])cube([3,ss_w,h2+2]);
+        translate([-(d4/2+3)+p_w,-ss_w,-1])cube([3,ss_w,h2+2]);
+        translate([-(d4/2+3)+p_w,0,-1])cube([3,ss_w,h2+2]);
+
     }
     }
 
@@ -44,7 +55,10 @@ module stand(d1=30,d2=28,d3=38,d4=40,h1=20,h2=25, ss_w=1){
 module spool_backing(d1=30,d2=28,d3=38,d4=40,h1=20,h2=25, support=true, stand=false){
     h_delta=(h2-h1)/2;
     difference(){
-        cylinder(r1=d4/2, r2=d3/2, h=h2);
+        union(){
+            cylinder(r1=d4/2, r2=d3/2, h=h2);
+            translate([0,0,-l_h])cylinder(r=d4/2,h=l_h);
+        }
         translate([0,0,h_delta])cylinder(r1=d1/2, r2=d2/2, h=h1);
         translate([0,0,h1+h_delta])cylinder(r1=d2/2, r2=d3/2-p_w, h=(h2-h1)/2);
         
@@ -65,4 +79,4 @@ module spool_backing(d1=30,d2=28,d3=38,d4=40,h1=20,h2=25, support=true, stand=fa
 }
 
 //spool_backing(stand=true);
-stand();
+//stand();
