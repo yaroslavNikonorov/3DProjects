@@ -2,10 +2,12 @@ w=70;
 h=23;
 p_w=14.3;
 p_h=10;
-p_l=25;
+p_l=15;
 
 s_w=20.2;
+s_ww=36;
 s_h=12;
+s_hh=4;
 s_dd=12;
 s_ddd=44;
 s_l=19;
@@ -65,7 +67,10 @@ module belt_support(){
     }
 module support(){
     difference(){
+        union(){
             translate([-w/2,-s_w/2,0])cube([w,s_w,s_h]);
+            translate([-w/2,-s_ww/2,s_h-s_hh])cube([w,s_ww,s_hh]);
+        }
             translate([0,-(s_w/2-s_ss),0])union(){
                 translate([-s_dd/2,0,0])mirror([-1,0,0])belt_support();
                 translate([s_dd/2,0,0])belt_support();
@@ -77,6 +82,19 @@ module support(){
                 translate([s_ddd/2,rr,-(h-s_h)])rotate([0])m3_hole();
                 translate([-s_ddd/2,rr,-(h-s_h)])rotate([0])m3_hole();
         }
+        
+        translate([0,s_ww/2-4,0])union(){
+                translate([0,0,-(h-s_h)])rotate([0])m3_hole();
+                translate([w/2-5,0,-(h-s_h)])rotate([0])m3_hole();
+                translate([-(w/2-5),0,-(h-s_h)])rotate([0])m3_hole();
+            
+            }
+        translate([0,-(s_ww/2-4),0])union(){
+                translate([0,0,-(h-s_h)])rotate([0])m3_hole();
+                translate([w/2-5,0,-(h-s_h)])rotate([0])m3_hole();
+                translate([-(w/2-5),0,-(h-s_h)])rotate([0])m3_hole();
+            }
+
     }
 
 module m3_support(){
@@ -112,9 +130,9 @@ module m3_support(){
 
 module profile_ss(){
     union(){
-        cube([p_l*2,p_w,p_h]);
-        translate([5,p_w/2,h])rotate([180,0,0])m3_hole();
-        translate([19,p_w/2,h])rotate([180,0,0])m3_hole();
+        cube([p_l*3,p_w,p_h]);
+        translate([5,p_w/2,h-4])rotate([180,0,0])m3_hole();
+        translate([25,p_w/2,h])rotate([180,0,0])m3_hole();
     }
 }
 
