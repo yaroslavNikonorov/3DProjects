@@ -4,7 +4,7 @@ p_w=14.3;
 p_h=10;
 p_l=15;
 
-s_w=20.2;
+s_w=20;
 s_ww=36;
 s_h=12;
 s_hh=4;
@@ -25,10 +25,10 @@ br=7.7;
 
 rr=5;
 d_d=0.3;
-d_in=1.4;
-dd_in=2.3;
+d_in=1.6;
+dd_in=2.5;
 //h=12.5;
-h_s=1;
+h_s=7;
 //w_s=14;
 //ss_d=2.7;
 $fn=100;
@@ -75,7 +75,6 @@ module support(){
                 translate([-s_dd/2,0,0])mirror([-1,0,0])belt_support();
                 translate([s_dd/2,0,0])belt_support();
             }
-        }
             translate([0,-(s_w/2-s_ss),0])union(){
                 translate([s_dd/2,rr,-(h-s_h)])rotate([0])m3_hole();
                 translate([-s_dd/2,rr,-(h-s_h)])rotate([0])m3_hole();
@@ -96,6 +95,7 @@ module support(){
             }
 
     }
+}
 
 module m3_support(){
     cylinder(r=1.6,h=30);
@@ -156,6 +156,6 @@ module main(){
         }
     }
     
-main();
+//main();
 //profile_mount();
-//support();
+support();
