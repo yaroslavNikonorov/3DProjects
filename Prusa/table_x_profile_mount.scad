@@ -11,7 +11,7 @@ s_hh=4;
 s_dd=12;
 s_ddd=44;
 s_l=19;
-s_ss=2.9;
+s_ss=2.7;
 
 
 //l=80.15;
@@ -24,9 +24,9 @@ hh=6;
 br=7.7;
 
 rr=5;
-d_d=0.3;
-d_in=1.4;
-dd_in=2.3;
+d_d=0.2;
+d_in=1.6;
+dd_in=2.5;
 //h=12.5;
 h_s=1;
 //w_s=14;
@@ -159,3 +159,4 @@ module main(){
 main();
 //profile_mount();
 //support();
+//belt_support();

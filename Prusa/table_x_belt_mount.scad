@@ -11,7 +11,7 @@ s_hh=4;
 s_dd=12;
 s_ddd=44;
 s_l=19;
-s_ss=2.9;
+s_ss=2.7;
 
 
 //l=80.15;
@@ -24,7 +24,7 @@ hh=6;
 br=7.7;
 
 rr=5;
-d_d=0.3;
+d_d=0;
 d_in=1.6;
 dd_in=2.5;
 //h=12.5;
@@ -58,11 +58,12 @@ module m4_hole(){
 }
 
 module belt_support(){
+    echo(h_s,rr,d_in,d_d);
     translate([0,rr,0])rotate([0,0,-109.5])difference(){
-        raindrop2D(thick=h_s, radius=rr-d_d);
-        raindrop2D(thick=h_s, radius=rr-d_in+d_d);
+        raindrop2D(thick=h_s, radius=rr+d_d);
+        raindrop2D(thick=h_s, radius=rr-(d_in+d_d));
     }
-    translate([rr*2,d_d,0])cube([s_l,dd_in-(d_d*2),h_s]);
+    translate([rr*2,-d_d,0])cube([s_l,dd_in+(d_d*2),h_s]);
      //translate()linear_extrude(height = h)polygon ( points= [ [0,r], [2*r,0], [0,-r]]); 
     }
 module support(){
@@ -145,7 +146,12 @@ module profile_mount(){
     }
 }
 
-
+module belt_mount(){
+    difference(){        
+        support();
+        translate([-w,4,0])cube([w*2,10,s_h-s_hh]);
+    }
+    }
 
 module main(){
     difference(){
@@ -158,4 +164,5 @@ module main(){
     
 //main();
 //profile_mount();
-support();
+rotate([180])belt_mount();    
+//rotate([180])support();
