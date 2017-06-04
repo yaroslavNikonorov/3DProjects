@@ -8,7 +8,7 @@ nema_d=23;
 nema_h=15;
 nema_dd = (nema_w-nema_sw)/2;
 
-b_d=16.3;
+b_d=16.2;
 
 
 bh_w=16.5;
@@ -20,7 +20,7 @@ ss_d=22;
 
 module m3_support(){
     $fn=100;
-    translate([0,0,-1])union(){
+    translate([0,0,-2])union(){
     cylinder(r=3,h=3);
     translate([0,0,3])cylinder(r1=3,r2=1.6,h=2);
     cylinder(r=1.6,h=50);
@@ -54,4 +54,4 @@ module main(){
     }
 }
     
-rotate([0,0,90])main();
+rotate([0,180,0])main();
